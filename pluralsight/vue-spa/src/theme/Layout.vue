@@ -1,25 +1,16 @@
 <template>
-      <div>
-      <nav class="nav has-shadow">
-        <div class="container">
-          <a href="/">
-            <img src="http://bit.ly/vue-img"
-              alt="Vue SPA" />
-          </a>
-        </div>
-      </nav>
-      <section class="main-section section"></section>
-      <footer class="footer">
-        <div class="container">
-          <div class="content has-text-centered">
-            Twitter stuff
-            <a href="https://twitter.com/bstavroulakis"
-            target="_blank">Twitter</a>
-          </div>
-        </div>
-      </footer>
+    <div>
+        <h1> This is your first component in Vue </h1>
+        <h3> {{ webpack }} </h3>
     </div>
 </template>
+
 <script>
-export default {}
+    export default {
+        name: "main-content",
+        data: () => ({
+            // reactive data property of the component.
+            webpack: 'Powered by webpack!',
+        }),
+    }
 </script>
