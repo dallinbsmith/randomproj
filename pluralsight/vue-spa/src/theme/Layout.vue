@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1> This is your first component in Vue </h1>
+        <h1> This is your first compon;ljkent blah Vue </h1>
         <h3> {{ webpack }} </h3>
     </div>
 </template>
