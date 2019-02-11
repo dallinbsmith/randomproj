@@ -1,5 +1,7 @@
 const path = require("path");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 const config = {
   entry: {
@@ -8,15 +10,19 @@ const config = {
   module: {
     rules: [{
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options:{
+          css: 'css-loader',
+          'scss': 'css-loader|sass-loader'
+        }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.(css|sass|scss)$/,
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' })
       }
     ]
   },
@@ -32,7 +38,12 @@ const config = {
     filename: "assets/js/[name].js"
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ExtractTextPlugin({ filename: "[name].css" }),
+    	// new UglifyJsPlugin({
+    	// 	cache: true,
+    	// 	parallel: true
+    	// })
  ]
 };
 
