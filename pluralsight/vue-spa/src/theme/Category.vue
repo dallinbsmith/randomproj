@@ -1,9 +1,8 @@
 <template>
         <div class="columns">
           <div class="column is-one-third" v-for="(post, title) in posts" v-bind:key="post.id">
-            <app-post :link="post.rest_api_enabler.link">
-              <h3 slot="title"> {{post}} </h3>
-              <span slot="content" v-html = "post.content.rendered"></span>
+            <app-post :link="post.link">
+              <h3 slot="title">{{post.text}}</h3>
             </app-post>
           </div>
         </div>
@@ -23,7 +22,7 @@
     },
     methods: {
       loadPosts (){
-        appService.getPosts.then(data => {
+        appService.getPosts().then(data => {
           this.posts = data
         })
       }

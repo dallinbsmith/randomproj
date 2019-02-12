@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://api.fullstackweekly.com'
+axios.defaults.baseURL = 'https://cat-fact.herokuapp.com'
 
 const appService = {
-  getPosts (categoryId){
+  getPosts(){
     return new Promise((resolve) => {
-      axios.get('https://cat-fact.herokuapp.com')
+      axios.get(`/facts/random?animal=cat&amount=6`)
       .then(response => {
           resolve(response.data)
       })
