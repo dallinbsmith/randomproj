@@ -6,6 +6,8 @@ import Login from './theme/Login.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+  mode: 'history',
+  scrollBehavior: (to, from, savedPosition) => ({y:0}),
   routes: [
     {path: '/login', component: Login},
     {path: '/', component: Category}

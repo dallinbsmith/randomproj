@@ -1,8 +1,13 @@
 <template>
-    <section class ="main-section section">
-      <div class="container content">
-
-        <h1>header</h1>
+    <nav>
+      <div class ="container">
+        <router-link to="/">
+          <h1>Index</h1>
+        </router-link>
+        <router-link to="/">Home
+        </router-link>
+        <router-link to="/login">Login
+        </router-link>
       </div>
-    </section>
+    </nav>
 </template>
