@@ -1,6 +1,6 @@
 <template>
         <div class="columns">
-          <div class="column is-one-third" v-for="(post, title) in posts" v-bind:key="post.id">
+          <div class="column is-one-third" v-for="(post) in posts" v-bind:key="post.id">
             <app-post :link="post.link">
               <h3 slot="title">{{post.text}}</h3>
             </app-post>
