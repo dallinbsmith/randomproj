@@ -16,7 +16,6 @@ export default class TaskListContainer extends Component {
     filteredList() {
         var columnName = this.name;
         var filteredList = filteredTasks(columnName);
-
         this.setState({ columnList: filteredList});
     }
 

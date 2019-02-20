@@ -8,7 +8,7 @@ export default class TaskList extends React.Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
             tasks: filteredTasks(this.props.name),
             name: this.props.name
@@ -27,7 +27,6 @@ export default class TaskList extends React.Component {
         if (this._inputElement.value !== "") {
             addTaskToList(this._inputElement.value, this.props.name);
         }
-        
         this.updateLists();
         this._inputElement.value = "";
         e.preventDefault();
@@ -81,7 +80,7 @@ export default class TaskList extends React.Component {
     }
 
     updateLists() {
-        
+
         this.setState({
             tasks: filteredTasks(this.props.name)
         });
@@ -91,19 +90,26 @@ export default class TaskList extends React.Component {
 
         return (
 
-            <div className= "taskListMain">
-                <div className= "header">
+            <div className="taskListMain">
+                <div className="header">
                     <h4>{this.props.name}</h4>
                     <form onSubmit={this.addTask}>
-                        <input ref={(a) => this._inputElement = a} 
-                                placeholder= "enter task"></input>
+                        <input ref={(a) => this._inputElement = a}
+                            placeholder="enter task"></input>
                         <button type="submit">add</button>
                     </form>
                 </div>
-                <TaskItems entries= { this.state.tasks } 
-                            delete= { this.deleteTask } 
-                            moveLeft= { this.moveLeft } 
-                            moveRight= {this.moveRight }/>            
+                <TaskItems entries={this.state.tasks}
+                    delete={this.deleteTask}
+                    moveLeft={this.moveLeft}
+                    moveRight={this.moveRight} />
+                <h1>
+                    bblah asldkfjasd;flkj
+                    </h1>
+                <h1>
+                    bblah asldkadsfasdffjasd;flkj
+                    </h1>
+                    <h1>asdflkasjdf;lasjkdf</h1>
             </div>
         );
     }
