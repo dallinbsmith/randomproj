@@ -2,7 +2,7 @@ import { stringInclues } from '../util/common';
 
 export const FILTER_ALL = 'all';
 export const FILTER_ACTIVE = 'active';
-export const FILTER_BEGUN = 'begun';
+export const FILTER_BACKLOG = 'begun';
 export const FILTER_COMPLETED = 'completed';
 
 export function applyFilter(list, filter) {
@@ -19,12 +19,6 @@ export function applyFilter(list, filter) {
         default:
             return list;
     }
-}
-
-export function search(list, query) {
-    let q = query.trim().toLowerCase();
-
-    return list.filter(({ text }) => stringInclues(text.toLowerCase(), q));
 }
 
 

@@ -3,7 +3,7 @@ import Info from './Info';
 import Header from './Header';
 import Footer from './Footer';
 import FilteredList from './FilteredList';
-import { getOptions, applyFilter, search } from '../../services/filter';
+import { getOptions, applyFilter} from '../../services/filter';
 import {
     Card, CardTitle, CardDeck, CardSubtitle, CardBody
 } from 'reactstrap';
@@ -11,10 +11,10 @@ import {
 
 export default function TodoList(props) {
     const options = getOptions();
-    const { list, filter, mode, query } = props.data;
+    const { list, filter, mode} = props.data;
     const { addNew, changeFilter, changeStatus, changeMode } = props.actions;
     const count = list.length;
-    const items = search(applyFilter(list, filter), query);
+    const items = applyFilter(list, filter)
 
     return (
         // <div className="container">
@@ -27,7 +27,7 @@ export default function TodoList(props) {
         //         </div>
         <div>
             <h1>
-                <Header {...{ addNew, mode, query }}/>
+                <Header {...{ addNew, mode}}/>
             </h1>
             <CardDeck>
                 {Object.keys(options).map(key => (
@@ -35,6 +35,9 @@ export default function TodoList(props) {
                         <CardTitle>
                             {options[key]}
                         </CardTitle>
+                        <CardSubtitle>
+                            <FilteredList {...{ items, changeStatus }} />
+                        </CardSubtitle>
                     </Card>
                 ))}
             </CardDeck>
@@ -44,7 +47,7 @@ export default function TodoList(props) {
                 <Card>
                     <CardBody>
                         <CardTitle>
-                            <Header {...{ addNew, mode, query }} />
+                            <Header {...{ addNew, mode}} />
                         </CardTitle>
                         <CardSubtitle>
                             <FilteredList {...{ items, changeStatus }} />
@@ -55,7 +58,7 @@ export default function TodoList(props) {
                 <Card>
                     <CardBody>
                         <CardTitle>
-                            <Header {...{ addNew, mode, query }} />
+                            <Header {...{ addNew, mode }} />
                         </CardTitle>
                         <CardSubtitle>
                             <FilteredList {...{ items, changeStatus }} />
@@ -66,7 +69,7 @@ export default function TodoList(props) {
                 <Card>
                     <CardBody>
                         <CardTitle>
-                            <Header {...{ addNew, mode, query }} />
+                            <Header {...{ addNew, mode }} />
                         </CardTitle>
                         <CardSubtitle>
                             <FilteredList {...{ items, changeStatus }} />
@@ -77,7 +80,7 @@ export default function TodoList(props) {
                 <Card>
                     <CardBody>
                         <CardTitle>
-                            <Header {...{ addNew, mode, query }} />
+                            <Header {...{ addNew, mode }} />
                         </CardTitle>
                         <CardSubtitle>
                             <FilteredList {...{ items, changeStatus }} />

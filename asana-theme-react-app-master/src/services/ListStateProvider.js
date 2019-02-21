@@ -31,12 +31,6 @@ var taskList = [
     }
     ];
 
-export function getList() {
-    var columnList = [];
-    columnList = taskList;
-    return columnList;
-}
-
 export function addTaskToList(text, status) {
     var newTask = { 
         text: text,
@@ -76,48 +70,4 @@ export function deleteTask(key) {
     }
     taskList.length--;
     // console.log("TASKLIST SIZE: " + taskList.length);
-}
-
-export function moveTaskLeft(columnName, key) {
-
-    for (var i = 0; i < taskList.length; i++) {
-        if (taskList[i].key === key) {
-            var index = i;
-        }
-    }
-
-    if (columnName === "Backlog") {
-        taskList[index].status = "Completed";
-    }
-    else if (columnName === "To Do") {
-        taskList[index].status = "Backlog";
-    }
-    else if (columnName === "In Progress") {
-        taskList[index].status = "To Do";
-    }
-    else if (columnName === "Completed") {
-        taskList[index].status = "In Progress"; 
-    }
-}
-
-export function moveTaskRight(columnName, key) {
-
-    for (var i = 0; i < taskList.length; i++) {
-        if (taskList[i].key === key) {
-            var index = i;
-        }
-    }
-
-    if (columnName === "Backlog") {
-        taskList[index].status = "To Do";
-    }
-    else if (columnName === "To Do") {
-        taskList[index].status = "In Progress";
-    }
-    else if (columnName === "In Progress") {
-        taskList[index].status = "Completed";
-    }
-    else if (columnName === "Completed") {
-        taskList[index].status = "Backlog"; 
-    }
 }
