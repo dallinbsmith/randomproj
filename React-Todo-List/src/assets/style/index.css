@@ -112,10 +112,6 @@ footer .buttons {
     background: url(../images/add.svg) no-repeat center;
 }
 
-.buttons .search {
-    background: url(../images/search.svg) no-repeat center;
-}
-
 .alert.alert-info {
     margin: 10px 0;
     padding: 10px;
