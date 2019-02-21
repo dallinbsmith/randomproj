@@ -103,13 +103,6 @@ export default class TaskList extends React.Component {
                     delete={this.deleteTask}
                     moveLeft={this.moveLeft}
                     moveRight={this.moveRight} />
-                <h1>
-                    bblah asldkfjasd;flkj
-                    </h1>
-                <h1>
-                    bblah asldkadsfasdffjasd;flkj
-                    </h1>
-                    <h1>asdflkasjdf;lasjkdf</h1>
             </div>
         );
     }

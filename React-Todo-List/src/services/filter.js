@@ -13,7 +13,7 @@ export function applyFilter(list, filter) {
         case FILTER_ACTIVE:
             return list.filter(item => item.completed !== true);
 
-        case FILTER_BEGUN:
+        case FILTER_BACKLOG:
             return list.filter(item => item.begun !== true);
 
         default:
@@ -31,8 +31,8 @@ export function search(list, query) {
 export function getOptions() {
     return {
         [FILTER_ALL]: 'All',
+        [FILTER_BACKLOG]: 'Backlog',
         [FILTER_ACTIVE]: 'Active',
-        [FILTER_COMPLETED]: 'Completed',
-        [FILTER_BEGUN]: 'Begun'
+        [FILTER_COMPLETED]: 'Completed'
     };
 }
