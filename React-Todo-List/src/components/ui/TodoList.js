@@ -1,15 +1,16 @@
 import React from 'react';
 import Info from './Info';
-import Lists from './Lists'
 import Header from './Header';
 import Footer from './Footer';
 import FilteredList from './FilteredList';
-import { applyFilter, search } from '../../services/filter';
-import {Card, CardTitle, CardDeck, CardSubtitle, CardBody
+import { getOptions, applyFilter, search } from '../../services/filter';
+import {
+    Card, CardTitle, CardDeck, CardSubtitle, CardBody
 } from 'reactstrap';
 
 
 export default function TodoList(props) {
+    const options = getOptions();
     const { list, filter, mode, query } = props.data;
     const { addNew, changeFilter, changeStatus, changeMode } = props.actions;
     const count = list.length;
@@ -25,53 +26,66 @@ export default function TodoList(props) {
         //             <Info {...{ mode }} />
         //         </div>
         <div>
-            <Lists/>
-                <CardDeck>
-                    <Card>
-                        <CardBody>
-                            <CardTitle>
-                                <Header {...{ addNew, mode, query }} />
-                            </CardTitle>
-                            <CardSubtitle>
-                                <FilteredList {...{ items, changeStatus }} />
-                            </CardSubtitle>
-                            <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
-                        </CardBody>
+            <h1>
+                <Header {...{ addNew, mode, query }}/>
+            </h1>
+            <CardDeck>
+                {Object.keys(options).map(key => (
+                    <Card key={key}>
+                        <CardTitle>
+                            {options[key]}
+                        </CardTitle>
                     </Card>
-                    <Card>
-                        <CardBody>
-                            <CardTitle>
-                                <Header {...{ addNew, mode, query }} />
-                            </CardTitle>
-                            <CardSubtitle>
-                                <FilteredList {...{ items, changeStatus }} />
-                            </CardSubtitle>
-                            <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
-                        </CardBody>
-                    </Card>
-                    <Card>
-                        <CardBody>
-                            <CardTitle>
-                                <Header {...{ addNew, mode, query }} />
-                            </CardTitle>
-                            <CardSubtitle>
-                                <FilteredList {...{ items, changeStatus }} />
-                            </CardSubtitle>
-                            <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
-                        </CardBody>
-                    </Card>
-                    <Card>
-                        <CardBody>
-                            <CardTitle>
-                                <Header {...{ addNew, mode, query }} />
-                            </CardTitle>
-                            <CardSubtitle>
-                                <FilteredList {...{ items, changeStatus }} />
-                            </CardSubtitle>
-                            <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
-                        </CardBody>
-                    </Card>
-                </CardDeck>
+                ))}
+            </CardDeck>
+            <hr/>
+            <hr/>
+            <CardDeck>
+                <Card>
+                    <CardBody>
+                        <CardTitle>
+                            <Header {...{ addNew, mode, query }} />
+                        </CardTitle>
+                        <CardSubtitle>
+                            <FilteredList {...{ items, changeStatus }} />
+                        </CardSubtitle>
+                        <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardBody>
+                        <CardTitle>
+                            <Header {...{ addNew, mode, query }} />
+                        </CardTitle>
+                        <CardSubtitle>
+                            <FilteredList {...{ items, changeStatus }} />
+                        </CardSubtitle>
+                        <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardBody>
+                        <CardTitle>
+                            <Header {...{ addNew, mode, query }} />
+                        </CardTitle>
+                        <CardSubtitle>
+                            <FilteredList {...{ items, changeStatus }} />
+                        </CardSubtitle>
+                        <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardBody>
+                        <CardTitle>
+                            <Header {...{ addNew, mode, query }} />
+                        </CardTitle>
+                        <CardSubtitle>
+                            <FilteredList {...{ items, changeStatus }} />
+                        </CardSubtitle>
+                        <Footer {...{ count, filter, changeFilter, mode, changeMode }} />
+                    </CardBody>
+                </Card>
+            </CardDeck>
 
         </div>
     );
