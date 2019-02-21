@@ -9,7 +9,6 @@ export default class TaskList extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             entry: '',
             entries: filteredTasks(this.props.name),
@@ -30,12 +29,15 @@ export default class TaskList extends React.Component {
     // function for adding items to the list
     addTask = (event) => {
         event.preventDefault();
-        this.setState({
+        const newEntry = this.state.entry;
+        const obj = {"key": newEntry + Math.floor(Math.random() * 10000), 'text': newEntry, 'status': this.state.name }
+        console.log(obj)
+        this.setState(prevState => ({
             entry: '',
-            entries: [...this.state.entries, this.state.entry]
-        });
-        console.log(this.state.entries)
-        console.log(this.state.entry)
+            entries: [...prevState.entries, obj]
+          })
+        );
+        filteredTasks()
     }
 
     onChange = (event) => {
@@ -57,7 +59,7 @@ export default class TaskList extends React.Component {
     }
 
     filteredTasks() {
-        const filtered = this.props.entries.filter(element => {
+        const filtered = this.state.entries.filter(element => {
             return element.status === this.props.name
         });
         this.setState({

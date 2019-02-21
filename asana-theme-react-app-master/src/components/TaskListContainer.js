@@ -7,6 +7,7 @@ export default class TaskListContainer extends Component {
         super(props);
         this.state = {
             columnID: "",
+            entry: '',
             backlog: [],
             todo: [],
             inprogress: [],
@@ -44,19 +45,52 @@ export default class TaskListContainer extends Component {
                 }
             ]
         }
+        this.filteredTasks = this.filteredTasks.bind(this)
+        this.addTask = this.addTask.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
     };
+
+    addTask = (event) => {
+        event.preventDefault();
+        const newEntry = this.state.entry;
+        const obj = { "key": newEntry + Math.floor(Math.random() * 10000), 'text': newEntry, 'status': this.state.name }
+        console.log(obj)
+        this.setState(prevState => ({
+            entry: '',
+            tasklist: [...prevState.entries, obj]
+        })
+        );
+        filteredTasks()
+    }
+
+    onChange = (event) => {
+        this.setState({ entry: event.target.value });
+      }
+
+    filteredTasks() {
+        const filtered = this.state.entries.filter(element => {
+            return element.status === this.props.name
+        });
+        this.setState({
+            filteredList: filtered
+        });
+    }
 
     render() {
         return (
             <div className="main-content">
                 <h1>{this.state.columnList}</h1>
                 <TaskList name="Backlog"
+                    addTask={this.addTask}
                     entries={this.state.tasklist} />
                 <TaskList name="To Do"
+                    addTask={this.addTask}
                     entries={this.state.tasklist} />
                 <TaskList name="In Progress"
+                    addTask={this.addTask}
                     entries={this.state.tasklist} />
                 <TaskList name="Completed"
+                    addTask={this.addTask}
                     entries={this.state.tasklist} />
             </div>
         );
