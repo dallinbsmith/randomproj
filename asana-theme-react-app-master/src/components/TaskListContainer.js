@@ -1,97 +1,140 @@
 import React, { Component } from 'react';
-import TaskList from './TaskList';
-import { filteredTasks } from '../services/ListStateProvider';
+import Lists from './Lists';
+import update from 'react-addons-update';
 
 export default class TaskListContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            columnID: "",
-            entry: '',
-            backlog: [],
-            todo: [],
-            inprogress: [],
-            completed: [],
+            newEntry: '',
+            backlog: [{
+                key: 4314,
+                text: 'Do CS371 Homework',
+                status: 'backlog'
+            }
+            ],
+            inProgress: [{
+                key: 1524,
+                text: 'Go to classes',
+                status: 'inProgress'
+            },],
+            toDo: [{
+                key: 1624,
+                text: 'Rock Climb / exercise',
+                status: 'toDo'
+            },
+            {
+                key: 41324,
+                text: 'Clean apartment for cleaning checks.',
+                status: 'toDo'
+            },
+            ],
+            completed: [{
+                key: 15024,
+                text: 'Write a paper',
+                status: 'completed'
+            }, {
+                key: 1324,
+                text: 'Finish SystemTech Coding challenge',
+                status: 'completed'
+            }
+
+            ],
             tasklist: [
                 {
                     key: 4314,
                     text: 'Do CS371 Homework',
-                    status: 'Backlog'
+                    status: 'backlog'
                 },
                 {
                     key: 1524,
                     text: 'Go to classes',
-                    status: 'In Progress'
+                    status: 'inProgress'
                 },
                 {
                     key: 1624,
                     text: 'Rock Climb / exercise',
-                    status: 'To Do'
+                    status: 'toDo'
                 },
                 {
                     key: 41324,
                     text: 'Clean apartment for cleaning checks.',
-                    status: 'To Do'
+                    status: 'toDo'
                 },
                 {
                     key: 15024,
                     text: 'Write a paper',
-                    status: 'Completed'
+                    status: 'completed'
                 },
                 {
                     key: 1324,
                     text: 'Finish SystemTech Coding challenge',
-                    status: 'Completed'
+                    status: 'completed'
                 }
             ]
-        }
-        this.filteredTasks = this.filteredTasks.bind(this)
+        };
         this.addTask = this.addTask.bind(this);
-        this.deleteTask = this.deleteTask.bind(this);
+        this.filterTasks = this.filterTasks.bind(this);
+        this.getData = this.getData.bind(this);
+
     };
 
-    addTask = (event) => {
-        event.preventDefault();
-        const newEntry = this.state.entry;
-        const obj = { "key": newEntry + Math.floor(Math.random() * 10000), 'text': newEntry, 'status': this.state.name }
-        console.log(obj)
+    // take input and name from child element to create new task
+
+    addTask(textInputValue, currentStatusValue) {
+        const obj = { "key": textInputValue + Math.floor(Math.random() * 10000), 'text': textInputValue, 'status': currentStatusValue }
+        
         this.setState(prevState => ({
-            entry: '',
-            tasklist: [...prevState.entries, obj]
+            newEntry: obj,
+            tasklist: [...prevState.tasklist, obj]
         })
         );
-        filteredTasks()
+        console.log(this.state)
+        this.filterTasks()
     }
 
-    onChange = (event) => {
-        this.setState({ entry: event.target.value });
-      }
-
-    filteredTasks() {
-        const filtered = this.state.entries.filter(element => {
-            return element.status === this.props.name
-        });
+    getData(val){
+        // do not forget to bind getData in constructor
         this.setState({
-            filteredList: filtered
-        });
+            backlog: update(this.state.backlog, {1: {status: {$set: 'toDo'}}})
+          })
+    }
+
+    filterTasks() {
+        var _ = require('lodash')
+        const filtered = _.groupBy(this.state.tasklist, "status")
+        console.log(filtered)
+        this.setState(prevState => ({
+            ...prevState,
+            backlog: filtered.backlog,
+            inProgress: filtered.inProgress,
+            toDo: filtered.toDo,
+            completed: filtered.completed
+        })
+        );
+        console.log(this.state)
     }
 
     render() {
         return (
             <div className="main-content">
                 <h1>{this.state.columnList}</h1>
-                <TaskList name="Backlog"
-                    addTask={this.addTask}
-                    entries={this.state.tasklist} />
-                <TaskList name="To Do"
-                    addTask={this.addTask}
-                    entries={this.state.tasklist} />
-                <TaskList name="In Progress"
-                    addTask={this.addTask}
-                    entries={this.state.tasklist} />
-                <TaskList name="Completed"
-                    addTask={this.addTask}
-                    entries={this.state.tasklist} />
+                <Lists handlerFromParent={this.addTask}
+                    name="backlog"
+                    tasklist={this.state.backlog} 
+                    getData={this.getData}/>
+                <Lists handlerFromParent={this.addTask}
+                    name="toDo"
+                    tasklist={this.state.toDo} 
+                    getData={this.getData}/>
+                <Lists handlerFromParent={this.addTask}
+                    name="inProgress"
+                    tasklist={this.state.inProgress} 
+                    getData={this.getData}/>
+                <Lists handlerFromParent={this.addTask}
+                    name="completed"
+                    tasklist={this.state.completed} 
+                    getData={this.getData}/>
             </div>
         );
     }
