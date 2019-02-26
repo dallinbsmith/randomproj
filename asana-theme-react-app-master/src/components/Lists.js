@@ -6,21 +6,19 @@ class Test extends Component {
     constructor(props) {
         super(props);
         this.inputChange = this.inputChange.bind(this);
-        this.submitHandler = this.submitHandler.bind(this);
+        this.submitToList = this.submitToList.bind(this);
         this.state = {
             inputField: '',
-            currentStatus: '',
+            tasklist: this.props.tasklist,
         };
     }
-    submitHandler(evt) {
+    submitToList(evt) {
         evt.preventDefault();
         // pass the input field value to the event handler passed
         // as a prop by the parent (TaskListContainer)
-        this.props.handlerFromParent(this.state.inputField, this.props.name);
-
+        this.props.addTask(this.state.inputField, this.props.name);
         this.setState({
             inputField: '',
-            currentStatus: "toDo",
         });
     }
 
@@ -37,7 +35,7 @@ class Test extends Component {
                 <div className="taskListMain">
                     <div className="header">
                         <h4>{this.props.name}</h4>
-                        <form onSubmit={this.submitHandler} className="App">
+                        <form onSubmit={this.submitToList} className="App">
                             <input type="text"
                                 id="theInput"
                                 value={this.state.inputField}
@@ -48,11 +46,10 @@ class Test extends Component {
                     <FlipMove duration={350} easing="ease-out">
                         {this.props.tasklist.map(item => (
                             <Item
-                                name= {this.props.name}
+                                task = {item}
                                 key={item.key}
-                                text={item.text}
-                                status={item.status}
-                                getData={this.props.getData}
+                                shiftTaskIndex={this.props.shiftTaskIndex}
+                                deleteTask= {this.props.deleteTask}
                             />
                         ))}
                     </FlipMove>
