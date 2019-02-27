@@ -46,13 +46,12 @@ export default class TaskListContainer extends Component {
 
     // take input and name from child element to create new task and key based on which input column submitted
 
-    addTask(textInputValue, currentStatusValue) {
-        const obj = { "key": textInputValue + Math.floor(Math.random() * 10000), 'text': textInputValue, 'status': currentStatusValue }
+    addTask(textInputValue, col) {
+        const obj = { "key": textInputValue + Math.floor(Math.random() * 10000), 'text': textInputValue, 'status': col }
         this.setState(prevState => ({
-            [currentStatusValue]: [...prevState[currentStatusValue], obj]
+            [col]: [...prevState[col], obj]
         })
         );
-        console.log(this.state)
     }
 
     // filter out the old task from the oldlist and move it to the direction passed through it's arguments
