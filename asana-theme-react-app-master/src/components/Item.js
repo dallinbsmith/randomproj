@@ -12,24 +12,21 @@ class Item extends Component {
     }
 
     lessComplete(){
+        const oldStatus = this.props.task.status
         const statusArr = ["backlog", "toDo", "inProgress", "completed"];
         const statIndex = statusArr.indexOf(this.props.task.status)
         const leftShifted = statusArr[statIndex - 1]
         this.props.task['status'] = leftShifted
-        this.props.task['key'] = this.props.task.key + 1
-        // this.props.deleteTask(this.props.task.status, this.props.task.key)
-        this.props.shiftTaskIndex(leftShifted, this.props.task);
+        this.props.shiftTaskIndex(leftShifted, this.props.task, oldStatus);
       }
 
     moreComplete(){
-        const oldKey = this.props.task.key
         const oldStatus = this.props.task.status
         const statusArr = ["backlog", "toDo", "inProgress", "completed"];
         const statIndex = statusArr.indexOf(this.props.task.status)
         const rightShifted = statusArr[statIndex + 1]
         this.props.task['status'] = rightShifted
-        this.props.task['key'] = this.props.task.key + 1
-        this.props.shiftTaskIndex(rightShifted, this.props.task, oldStatus, oldKey);
+        this.props.shiftTaskIndex(rightShifted, this.props.task, oldStatus);
     }
      
     delete(){
@@ -40,9 +37,9 @@ class Item extends Component {
         return (
             <div>                
                 <h1>{this.props.task.text}</h1>
-                <button onClick = {this.lessComplete}>Left</button>
+                {this.props.task.status=== "backlog"? '' : <button onClick = {this.lessComplete}>Left</button>}
                 <button onClick = {this.delete}>Delete</button>
-                <button onClick = {this.moreComplete}>Right</button>
+                {this.props.task.status=== "completed"? '' : <button onClick = {this.moreComplete}>Right</button>}
             </div>
         );
     }

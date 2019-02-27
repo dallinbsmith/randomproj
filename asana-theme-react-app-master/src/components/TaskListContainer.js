@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Lists from './Lists';
-import update from 'react-addons-update';
 
 export default class TaskListContainer extends Component {
     constructor(props) {
@@ -56,18 +55,18 @@ export default class TaskListContainer extends Component {
         console.log(this.state)
     }
 
-    shiftTaskIndex(col, todo, oldCol, oldKey) {
-        this.setState(prevState => ({ 
-            ...prevState,
-            [col]: [...this.state[col], todo] }))
-        // this.deleteTask(oldCol, oldKey)
-        console.log(this.state)
-        // console.log(col, todo, oldCol, oldKey)
+    shiftTaskIndex(col, todo, oldCol) {
+        // const oldArr = [...this.state[oldCol]]
+        // const a = oldArr.filter(task => task.key !== oldKey)
+        this.setState({ 
+            [oldCol]: this.state[oldCol].filter(task => task.key !== todo.key),
+            [col]: [...this.state[col], todo] }, function(){
+            console.log(this.state)
+        })
     }
 
     deleteTask(col, key){
-        const filtered = this.state[col].filter(task => task.key !== key)
-        this.setState({ [col]: filtered })
+        this.setState({ [col]: this.state[col].filter(task => task.key !== key) })
     }
 
     render() {

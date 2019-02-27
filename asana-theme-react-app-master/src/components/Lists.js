@@ -46,6 +46,7 @@ class Test extends Component {
                     <FlipMove duration={350} easing="ease-out">
                         {this.props.tasklist.map(item => (
                             <Item
+                                tasklist = {this.props.tasklist}
                                 task = {item}
                                 key={item.key}
                                 shiftTaskIndex={this.props.shiftTaskIndex}
