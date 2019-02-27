@@ -55,13 +55,12 @@ export default class TaskListContainer extends Component {
         console.log(this.state)
     }
 
+    // filter out the old task from the oldlist and move it to the direction passed through it's arguments
+
     shiftTaskIndex(col, todo, oldCol) {
-        // const oldArr = [...this.state[oldCol]]
-        // const a = oldArr.filter(task => task.key !== oldKey)
         this.setState({ 
             [oldCol]: this.state[oldCol].filter(task => task.key !== todo.key),
             [col]: [...this.state[col], todo] }, function(){
-            console.log(this.state)
         })
     }
 
@@ -75,21 +74,25 @@ export default class TaskListContainer extends Component {
                 <h1>{this.state.columnList}</h1>
                 <Lists addTask={this.addTask}
                     name="backlog"
+                    title = "Backlog"
                     tasklist={this.state.backlog}
                     shiftTaskIndex={this.shiftTaskIndex}
                     deleteTask={this.deleteTask} />
                 <Lists addTask={this.addTask}
                     name="toDo"
+                    title = "To Do"
                     tasklist={this.state.toDo}
                     shiftTaskIndex={this.shiftTaskIndex} 
                     deleteTask={this.deleteTask}/>
                 <Lists addTask={this.addTask}
                     name="inProgress"
+                    title = "In Progress"
                     tasklist={this.state.inProgress}
                     shiftTaskIndex={this.shiftTaskIndex} 
                     deleteTask={this.deleteTask}/>
                 <Lists addTask={this.addTask}
                     name="completed"
+                    title = "Completed"
                     tasklist={this.state.completed}
                     shiftTaskIndex={this.shiftTaskIndex} 
                     deleteTask={this.deleteTask}/>

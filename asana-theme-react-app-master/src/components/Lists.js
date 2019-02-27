@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FlipMove from 'react-flip-move';
-import Item from "./Item";
+import Task from "./Task";
 
 class Test extends Component {
     constructor(props) {
@@ -12,10 +12,11 @@ class Test extends Component {
             tasklist: this.props.tasklist,
         };
     }
-    submitToList(evt) {
-        evt.preventDefault();
+
         // pass the input field value to the event handler passed
         // as a prop by the parent (TaskListContainer)
+    submitToList(evt) {
+        evt.preventDefault();
         this.props.addTask(this.state.inputField, this.props.name);
         this.setState({
             inputField: '',
@@ -34,7 +35,7 @@ class Test extends Component {
             <div>
                 <div className="taskListMain">
                     <div className="header">
-                        <h4>{this.props.name}</h4>
+                        <h4>{this.props.title}</h4>
                         <form onSubmit={this.submitToList} className="App">
                             <input type="text"
                                 id="theInput"
@@ -44,11 +45,11 @@ class Test extends Component {
                         </form>
                     </div>
                     <FlipMove duration={350} easing="ease-out">
-                        {this.props.tasklist.map(item => (
-                            <Item
+                        {this.props.tasklist.map(task => (
+                            <Task
                                 tasklist = {this.props.tasklist}
-                                task = {item}
-                                key={item.key}
+                                task = {task}
+                                key={task.key}
                                 shiftTaskIndex={this.props.shiftTaskIndex}
                                 deleteTask= {this.props.deleteTask}
                             />

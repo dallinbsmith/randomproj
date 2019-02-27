@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Item extends Component {
+class Task extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +11,8 @@ class Item extends Component {
 
     }
 
+    // more and lesscomplete make a shallow copy of status, then shift the change status
+    
     lessComplete(){
         const oldStatus = this.props.task.status
         const statusArr = ["backlog", "toDo", "inProgress", "completed"];
@@ -45,4 +47,4 @@ class Item extends Component {
     }
 }
 
-export default Item;
+export default Task;
