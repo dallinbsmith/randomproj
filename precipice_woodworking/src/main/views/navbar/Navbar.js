@@ -1,48 +1,66 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+export default class StickyNavbar extends React.Component {
+  constructor(props) {
+    super(props);
 
-
-
-class StickyNavbar extends Component {
-    render() {
-        return (
-            <div>
-                <Container>
-  {/* Stack the columns on mobile by making one full-width and the other half-width */}
-  <Row>
-    <Col xs={12} md={8}>
-      xs=12 md=8
-    </Col>
-    <Col xs={6} md={4}>
-      xl=6 md=4
-    </Col>
-  </Row>
-
-  {/* Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop */}
-  <Row>
-    <Col xs={6} md={4}>
-      xs=6 md=4
-    </Col>
-    <Col xs={6} md={4}>
-      xs=6 md=4
-    </Col>
-    <Col xs={6} md={4}>
-      xs=6 md=4
-    </Col>
-  </Row>
-
-  {/* Columns are always 50% wide, on mobile and desktop */}
-  <Row>
-    <Col xs={6}>xs=6</Col>
-    <Col xs={6}>xs=6</Col>
-  </Row>
-</Container>;
-            </div>
-        );
-    }
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/">Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
+  }
 }
-
-export default StickyNavbar;
