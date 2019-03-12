@@ -43,6 +43,7 @@
    /* nav-wrap */
    #nav-wrap {
       font: 11px 'Cormorant', serif;
+      font-weight: 700;
       letter-spacing: 1.5px;
    }
 
@@ -102,6 +103,7 @@
    #nav-wrap {
       font: 12px 'Cormorant', serif;
       background: transparent !important;
+      font-weight: 700;
       letter-spacing: 1.5px;  
       width: auto;
       position: fixed;
@@ -193,7 +195,7 @@
    }
    header .banner-text h1 { font: 68px/1.1em 'Cormorant', serif; }
    header .banner-text h3 {
-      font: 16px/1.9em 'librebaskerville-regular', serif;
+      font: 12px/.9em 'librebaskerville-regular', serif;
       width: 85%;
    }
    header .banner-text hr {
