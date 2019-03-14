@@ -73,12 +73,6 @@ header .banner-text h3 span,
 header .banner-text h3 a {
    color: #fff;
 }
-header .banner-text hr {
-   width: 60%;
-   margin: 18px auto 24px auto;
-   border-color: #2F2D2E;
-   border-color: rgba(150, 150, 150, .1);
-}
 
 /* header social links */
 header .social {
@@ -143,7 +137,7 @@ img.precipice-hr {
    left: 0;
    top: 0;
 }
-.opaque { background-color: #333; }
+.opaque { background-color: 6091d8; }
 
 /* hide toggle button */
 #nav-wrap > a.mobile-btn { display: none; }
@@ -287,12 +281,22 @@ ul#nav li.current a { color: #6091d8; }
    line-height: 30px;
    color: #7A7A7A;
 }
-#about .profile-pic {
-   position: relative;
-   width: 120px;
-   height: 120px;
-   border-radius: 100%;
+#about .banner{
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 100%;
+  text-align: center;
 }
+
+#about .banner-text { width: 100%; }
+#about .banner-text h1 {
+   font: 50px/.8em 'Cormorant', serif;
+   color: #fff;
+   letter-spacing: .02em;
+   margin: 0 auto 18px auto;
+}
+
 #about .contact-details { width: 41.66667%; }
 #about .download {
    width: 58.33333%;

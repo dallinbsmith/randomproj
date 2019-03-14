@@ -55,6 +55,12 @@
       height: 114px;
       margin-left: 12px;
    }
+
+   #about .banner-text{
+    font: 80px/1.1em 'Cormorant', serif;
+    letter-spacing: -1px;
+    margin: 0 auto 12px auto;
+   }
    #about .contact-details { width: 50%; }
    #about .download { width: 50%; }
 
