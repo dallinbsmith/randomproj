@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class About extends Component {
+class Collections extends Component {
   render() {
 
     if (this.props.data) {
@@ -19,27 +19,30 @@ class About extends Component {
     }
 
     return (
-      <section id="about">
+      <section id="collections">
         <div className="row banner">
           <div className="banner-text">
-            <h1 id = "aboutBanner" className="responsive-headline">The Collection</h1>
+            <h1 id="collectionsBanner" className="responsive-headline">The Collection</h1>
             <h2 className="responsive-headline">Hand carved. Real Wood.</h2>
           </div>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div className="row">
-          <div className="three columns">
+          <div className="six columns collections collections-one">
             <img className="collections-pic" src={collections_1} />
           </div>
-          <div className="three columns">
-            <img className="profile-pic" src={collections_2} />
+          <div className="six columns collections collections-two">
+            <img className="collections-pic" src={collections_2} />
           </div>
-          <div className="three columns">
-            <img className="profile-pic" src={profilepic} />
+        </div>
+        <div className="row cross-beam"></div>
+        <div className="row">
+          <div className="six columns collections collections-three">
+            <img className="collections-pic" src={collections_2} />
           </div>
-          <div className="three columns">
-            <img className="profile-pic" src={profilepic} />
+          <div className="six columns collections collections-four">
+            <img className="collections-pic" src={collections_1} />
           </div>
         </div>
       </section>
@@ -47,7 +50,7 @@ class About extends Component {
   }
 }
 
-export default About;
+export default Collections;
 
 
 {/* <section id="about">

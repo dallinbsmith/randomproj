@@ -40,20 +40,26 @@ jQuery(document).ready(function ($) {
     //     $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500, 'linear');
     // });
 
+    /*----------------------------------------------------*/
+    /* Transition to About Section
+    ------------------------------------------------------ */
+
+
     $(window).scroll(function () {
-        var hT = $('#about').offset().top,
-            hH = $('#about').outerHeight(),
+        var hT = $('#collections').offset().top,
+            hH = $('#collections').outerHeight(),
             wH = $(window).height(),
             wS = $(this).scrollTop();
         if ((wS * 20) > (hT + hH - wH)) {
             if (wS < 500) {
                 console.log(wS);
                 $("#headerBanner").css({
-                    "opacity": (40/(wS))+ .1, "font-size": 35 + wS/10 + "pt"
+                    "opacity": (40 / (wS)) + .2, "font-size": 30 + wS / 10 + "pt"
                 });
-                $("#aboutBanner").css({
-                    "opacity": (((wS)/400)-.45), "font-size": 100 - (Math.abs(wS))/10 + "pt"
+                $("#collectionsBanner").css({
+                    "opacity": (((wS) / 400) - .45), "font-size": 90 - (Math.abs(wS)) / 10 + "pt"
                 });
+                $(".collections").animate({opacity: 1}, 4000);
             }
         }
     });
@@ -109,6 +115,7 @@ jQuery(document).ready(function ($) {
         var h = $('header').height();
         var y = $(window).scrollTop();
         var nav = $('#nav-wrap');
+        var listitems = $('#nav');
 
         if ((y > h * .20) && (y < h) && ($(window).outerWidth() > 768)) {
             nav.fadeOut('fast');
@@ -116,9 +123,11 @@ jQuery(document).ready(function ($) {
         else {
             if (y < h * .20) {
                 nav.removeClass('opaque').fadeIn('fast');
+                listitems.removeClass('light-letters').fadeIn('fast');
             }
             else {
                 nav.addClass('opaque').fadeIn('fast');
+                listitems.addClass('light-letters').fadeIn('fast');
             }
         }
 

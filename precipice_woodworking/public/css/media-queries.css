@@ -48,21 +48,16 @@
    }
 
 
-   /* About Section
+   /* Collections Section
    ------------------------------------------------------------------- */
-   #about .profile-pic {
-      width: 114px;
-      height: 114px;
-      margin-left: 12px;
-   }
 
-   #about .banner-text{
+   #collections .banner-text{
     font: 80px/1.1em 'Cormorant', serif;
     letter-spacing: -1px;
     margin: 0 auto 12px auto;
    }
-   #about .contact-details { width: 50%; }
-   #about .download { width: 50%; }
+   #collections .contact-details { width: 50%; }
+   #collections .download { width: 50%; }
 
    /* Resume Section
    ------------------------------------------------------------------- */
@@ -221,15 +216,15 @@
    header .scrolldown { display: none; }
 
 
-   /* About Section
+   /* Collections Section
    -------------------------------------------------------------------- */
-   #about .profile-pic { display: none; }
-   #about .download .button {
+   #collections .profile-pic { display: none; }
+   #collections .download .button {
       width: 100%;
       text-align: center;
       padding: 15px 20px;
    }
-   #about .main-col { padding-right: 30px; }
+   #collections .main-col { padding-right: 30px; }
 
 
    /* Resume Section
