@@ -89,6 +89,19 @@ header .social li {
 header .social li a { color: #fff; }
 header .social li a:hover { color: #11ABB0; }
 
+/* snap points but currently can get snap points working concurrently with smoothscroll */
+
+/* .snap-container {
+  scroll-snap-type: y proximity;
+  overflow-y: none;
+  height: 100vh;
+}
+
+.snap-container .snap-point {
+  scroll-snap-align: start;
+} */
+
+
 /* scrolldown link */
 header .scrolldown a {
    position: absolute;
@@ -258,6 +271,33 @@ ul#nav li.current a { color: #6091d8; }
   }
 }
 
+/* banner header animation */
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes bannerdisappear {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+/* Standard syntax */
+@keyframes bannerdisappear {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+#headerBanner{
+  /* font: 80px/1.1em 'Cormorant', serif; */
+}
+
+
 /* ------------------------------------------------------------------ */
 /* c. About Section
 /* ------------------------------------------------------------------ */
@@ -284,13 +324,13 @@ ul#nav li.current a { color: #6091d8; }
 #about .banner{
   display: inline-block;
   margin: 0 auto;
-  margin-top: 15%;
+  margin-top: 5%;
   width: 100%;
   text-align: center;
 }
 
 #about .banner-text { width: 100%; }
-#about .banner-text h1 {
+#aboutBanner {
    font: 50px/.8em 'Cormorant', serif;
    color: #fff;
    letter-spacing: .02em;

@@ -6,9 +6,9 @@ class Header extends Component {
     if (this.props.data) {
       var logoCorner = "images/" + this.props.data.logo;
       var precipiceHr = "images/" + this.props.data.precipice_hr;
-      var networks = this.props.data.social.map(function (network) {
-        return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
-      })
+      // var networks = this.props.data.social.map(function (network) {
+      //   return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
+      // })
     }
 
     return (
@@ -29,7 +29,7 @@ class Header extends Component {
 
         <div className="row banner">
           <div className="banner-text">
-            <h1 className="responsive-headline">Precipice Woodshop</h1>
+            <h1 id ="headerBanner" className="responsive-headline">Precipice Woodshop</h1>
             <img className="precipice-hr" src={precipiceHr} alt="Precipice Logo" />
             <h3>Wasatch Inspired</h3>
             {/* <ul className="social">
@@ -39,7 +39,7 @@ class Header extends Component {
         </div>
 
 
-        <section id="scroll-animate" class="scrolldown animate-down">
+        <section id="scroll-animate" className="scrolldown animate-down">
           <a className="smoothscroll" href="#about"><span></span><span></span></a>
         </section>
 

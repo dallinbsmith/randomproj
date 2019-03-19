@@ -4,32 +4,36 @@ class About extends Component {
   render() {
 
     if (this.props.data) {
-      var name = this.props.data.name;
+      // var name = this.props.data.name;
       var profilepic = "images/" + this.props.data.image;
       var collections_1 = "images/" + this.props.data.collections_1;
-      var bio = this.props.data.bio;
-      var street = this.props.data.address.street;
-      var city = this.props.data.address.city;
-      var state = this.props.data.address.state;
-      var zip = this.props.data.address.zip;
-      var phone = this.props.data.phone;
-      var email = this.props.data.email;
-      var resumeDownload = this.props.data.resumedownload;
+      var collections_2 = "images/" + this.props.data.collections_2;
+      // var bio = this.props.data.bio;
+      // var street = this.props.data.address.street;
+      // var city = this.props.data.address.city;
+      // var state = this.props.data.address.state;
+      // var zip = this.props.data.address.zip;
+      // var phone = this.props.data.phone;
+      // var email = this.props.data.email;
+      // var resumeDownload = this.props.data.resumedownload;
     }
 
     return (
       <section id="about">
-        <div class="row banner">
+        <div className="row banner">
           <div className="banner-text">
-            <h1 class="responsive-headline">The Collection</h1>
+            <h1 id = "aboutBanner" className="responsive-headline">The Collection</h1>
+            <h2 className="responsive-headline">Hand carved. Real Wood.</h2>
           </div>
         </div>
+        <br/>
+        <br/>
         <div className="row">
           <div className="three columns">
             <img className="collections-pic" src={collections_1} />
           </div>
           <div className="three columns">
-            <img className="profile-pic" src={profilepic} />
+            <img className="profile-pic" src={collections_2} />
           </div>
           <div className="three columns">
             <img className="profile-pic" src={profilepic} />
