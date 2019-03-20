@@ -29,20 +29,44 @@ class Collections extends Component {
         <br />
         <br />
         <div className="row">
-          <div className="six columns collections collections-one">
-            <img className="collections-pic" src={collections_1} />
+          <div className="six columns collections collections-top-boarder">
+            <h2>Tables</h2>
+            <div className="image-hover">
+              <img className="collections-pic collections-one" src={collections_1} />
+              <a className = "collections-shop-button">
+                <h2>Shop</h2>
+              </a>
+            </div>
           </div>
-          <div className="six columns collections collections-two">
-            <img className="collections-pic" src={collections_2} />
+          <div className="six columns collections">
+            <h2>Decor</h2>
+            <div className="image-hover">
+              <img className="collections-pic collections-two" src={collections_2} />
+              <a className = "collections-shop-button">
+                <h2>Shop</h2>
+              </a>
+            </div>
           </div>
         </div>
         <div className="row cross-beam"></div>
         <div className="row">
-          <div className="six columns collections collections-three">
-            <img className="collections-pic" src={collections_2} />
+          <div className="six columns collections collections-center-boarder">
+            <h2>Chairs</h2>
+            <div className="image-hover">
+              <img className="collections-pic collections-three" src={collections_2} />
+              <a className = "collections-shop-button">
+                <h2>Shop</h2>
+              </a>
+            </div>
           </div>
-          <div className="six columns collections collections-four">
-            <img className="collections-pic" src={collections_1} />
+          <div className="six columns collections">
+            <h2>Benches</h2>
+            <div className="image-hover">
+              <img className="collections-pic collections-four" src={collections_1} />
+              <a className = "collections-shop-button">
+                <h2>Shop</h2>
+              </a>
+            </div>
           </div>
         </div>
       </section>

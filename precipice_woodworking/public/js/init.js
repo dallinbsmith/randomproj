@@ -52,19 +52,39 @@ jQuery(document).ready(function ($) {
             wS = $(this).scrollTop();
         if ((wS * 20) > (hT + hH - wH)) {
             if (wS < 500) {
-                console.log(wS);
                 $("#headerBanner").css({
-                    "opacity": (40 / (wS)) + .2, "font-size": 30 + wS / 10 + "pt"
+                    "opacity": (40 / (wS)) + .25, "font-size": 25 + wS / 10 + "pt"
                 });
                 $("#collectionsBanner").css({
-                    "opacity": (((wS) / 400) - .45), "font-size": 90 - (Math.abs(wS)) / 10 + "pt"
+                    "opacity": (((wS) / 400) - .45), "font-size": 80 - (Math.abs(wS)) / 10 + "pt"
                 });
-                $(".collections").animate({opacity: 1}, 4000);
+                $(".collections").animate({opacity: 1}, 5000);
+                $('.collections-one').css({'right' : '80px', 'left': ''}).animate({
+                    'right': '0px'    
+                }, 5000);
+                $('.collections-two').css({'bottom' : '80px', 'top': ''}).animate({
+                    'bottom': '0px'    
+                }, 6000);  
+                $('.collections-three').css({'top' : '80px', 'bottom': ''}).animate({
+                    'top': '0px'    
+                }, 4000);  
+                $('.collections-four').css({'left' : '80px', 'right': ''}).animate({
+                    'left': '0px'    
+                }, 5500);    
             }
         }
     });
 
-
+    $(".image-hover").hover(
+        function () {
+          $(this).children('img').addClass('hover-block');
+          $(this).children('a').addClass('button-visible');
+        }, 
+        function () {
+          $(this).children('img').removeClass('hover-block');
+          $(this).children('a').removeClass('button-visible');
+        }
+        );
 
     /*----------------------------------------------------*/
     /* Highlight the current section in the navigation bar
