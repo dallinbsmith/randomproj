@@ -4,6 +4,7 @@ import $ from 'jquery';
 import './App.css';
 import Collections from './Components/Collections';
 import { Switch, Route } from "react-router-dom";
+import Header from "./Components/Header";
 // import Resume from './Components/Resume';
 import Contact from './Components/Contact';
 // import Testimonials from './Components/Testimonials';
@@ -44,6 +45,7 @@ class Home extends Component {
   render() {
     return (
       <div className="App snap-container">
+        <Header/>
         {/* <div className="snap-point"> */}
           {/* <Header data={this.state.resumeData.main} /> */}
         {/* </div>
