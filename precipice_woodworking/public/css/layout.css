@@ -1021,6 +1021,11 @@ call-to-action .button {
    color: #ebeeee;
 }
 
+#contact .logo-contact{
+  height: 140px;
+  margin-bottom: 10px;
+}
+
 #contact h4 {
    font: 16px/24px 'Cormorant', serif;
    color: #EBEEEE;

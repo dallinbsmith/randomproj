@@ -5,23 +5,17 @@ class Contact extends Component {
 
     if (this.props.data) {
       var message = this.props.data.contactmessage;
+      var logopic = "images/precipice_woodshop_logo.png" + this.props.data.logopic;
     }
 
     return (
       <section id="contact">
-        ∏
          <div className="row section-head">
-
           <div className="two columns header-col">
-
           </div>
-
           <div className="ten columns">
-
             <p className="lead">{message}</p>
-
           </div>
-
         </div>
 
         <div className="row">
@@ -37,12 +31,12 @@ class Contact extends Component {
 
                 <div>
                   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-                  <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange} />/>
+                  <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange} />
                   </div>
 
                 <div>
                   <label htmlFor="contactSubject">Subject</label>
-                  <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange} />/>
+                  <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange} />
                   </div>
 
                 <div>
@@ -68,6 +62,8 @@ class Contact extends Component {
 
           <aside className="four columns footer-widgets">
             <div className="widget widget_contact">
+
+            <img className = "logo-contact" src="images/precipice_woodshop_logo.png" />
 
               <h4>Salt Lake City, UT</h4>
               <p className="address">

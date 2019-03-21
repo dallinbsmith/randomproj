@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
+import { Switch, Route } from "react-router-dom";
+
+import Home from "./Home";
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 import ReactGA from 'react-ga';
 import $ from 'jquery';
 import './App.css';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
 import Collections from './Components/Collections';
-// import Resume from './Components/Resume';
+import Resume from './Components/Resume';
 import Contact from './Components/Contact';
-// import Testimonials from './Components/Testimonials';
-// import Portfolio from './Components/Portfolio';
+// import Projects from "./views/projects/Projects";
+// import Resume from "./views/resume/Resume";
+// import Contact from "./views/contact/Contact"
+// import Footer from "./views/footer/Footer"
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      foo: 'bar',
       resumeData: {}
     };
 
@@ -42,28 +46,18 @@ class App extends Component {
   componentDidMount() {
     this.getResumeData();
   }
-
-  render() {
-    return (
-      <div className="App snap-container">
-        <div className="snap-point">
-          <Header data={this.state.resumeData.main} />
+    render (){
+      return(
+        <div>
+            <Header data={this.state.resumeData.main} />
+            <Switch>
+                <Route exact path="/" resumeData={this.state.resumeData} component={Home}/>
+                <Resume path="/resume"/>
+            </Switch>
+            <Footer data={this.state.resumeData.main} />
         </div>
-        <div className="snap-point">
-          <Collections data={this.state.resumeData.main} />
-        </div>
-        {/* <Resume data={this.state.resumeData.resume}/>
-        <Portfolio data={this.state.resumeData.portfolio}/> */}
-        {/* <Testimonials data={this.state.resumeData.testimonials}/> */}
-        <div className="snap-point">
-          <Contact data={this.state.resumeData.main} />
-        </div>
-        <div className="snap-point">
-          <Footer data={this.state.resumeData.main} />
-        </div>
-      </div>
-    );
-  }
+    )
+}
 }
 
-export default App;
+export default App
