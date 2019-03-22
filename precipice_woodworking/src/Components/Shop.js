@@ -11,7 +11,7 @@ class Shop extends Component {
     render() {
         return (
             <div>
-                <h1>blah blah</h1>
+                <h1>Testing test</h1>
             </div>
         );
     }
